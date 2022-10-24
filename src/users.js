@@ -23,6 +23,7 @@ import {
   SelectInput,
   SelectArrayInput,
   ArrayInput,
+  ArrayField,
   SimpleFormIterator,
   ImageInput,
   ImageField,
@@ -429,3 +430,91 @@ export const calciEdit = (props) => (
     </SimpleForm>
   </Edit>
 );
+
+export const imageCreate = () => (
+  <Create redirect="show">
+    <SimpleForm>
+      <TextInput source="url" />
+    </SimpleForm>
+  </Create>
+);
+
+export const imageEdit = (props) => (
+  <Edit {...props}>
+    <SimpleForm>
+      <TextInput source="url" />
+    </SimpleForm>
+  </Edit>
+);
+
+export const imageShow = (props) => (
+  <Show {...props}>
+    <SimpleShowLayout>
+      <ImageField source="url" />
+      <TextField source="url" />
+    </SimpleShowLayout>
+  </Show>
+);
+
+export const imageList = (props) => {
+  const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+
+  return (
+    <>
+      <div>
+        <CardContent></CardContent>
+        <Card
+          sx={{
+            mt: 4,
+            ml: 1,
+            width: "100%",
+            alignSelf: "center",
+            borderRadius: 2,
+          }}
+        >
+          <CardContent>
+            <Typography sx={{ fontWeight: 500, fontSize: "1.5rem" }}>
+              Click on Create button and Enter the URL of the IMAGE.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              href="#/images/create"
+              size="medium"
+              variant="contained"
+              boxShadow="1"
+              color="primary"
+              sx={{ ml: 1, mr: 1, mb: 2 }}
+            >
+              Create
+            </Button>
+          </CardActions>
+        </Card>
+      </div>
+      <List {...props} sx={{ mt: 2 }} actions={<PostListActions />}>
+        {isSmall ? (
+          <SimpleList
+            sx={{
+              borderRadius: "0.5rem",
+              boxShadow: "0 0 0.6rem rgba(0,0,0,0.1)",
+            }}
+            linkType="show"
+            primaryText={(record) => <b>{record.url}</b>}
+          />
+        ) : (
+          <Datagrid bulkActionButtons={false} exporter={false} rowClick="show">
+            <TextField sx={{ fontWeight: "bold" }} source="url" />
+            <ShowButton sx={{ fontWeight: "bold" }} label="Show" />
+            <EditButton sx={{ fontWeight: "bold" }} label="Edit" />
+            <DeleteWithConfirmButton
+              confirmContent="You will not be able to recover this record. Are you sure?"
+              label="Delete"
+              translateOptions={(record) => record.name}
+              redirect={false}
+            />
+          </Datagrid>
+        )}
+      </List>
+    </>
+  );
+};

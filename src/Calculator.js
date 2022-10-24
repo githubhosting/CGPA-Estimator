@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // import { Button } from "react-aria-menubutton";
 import styles from "./styles.css";
 import Button from "@mui/material/Button";
@@ -52,14 +52,6 @@ const firebaseConfig = {
   messagingSenderId: "595971213871",
   appId: "1:595971213871:web:432717a56846feb84a14da",
   measurementId: "G-BJWWD8H4BX",
-  //   apiKey: "AIzaSyCnlpD5DSecqNQzgwwUUbW-BZyz-FuIlb0",
-  //   authDomain: "foodey-63192.firebaseapp.com",
-  //   databaseURL: "https://foodey-63192-default-rtdb.firebaseio.com",
-  //   projectId: "foodey-63192",
-  //   storageBucket: "foodey-63192.appspot.com",
-  //   messagingSenderId: "1056375278651",
-  //   appId: "1:1056375278651:web:5784ec975990b10c65a01e",
-  //   measurementId: "G-G77NTF3JMK",
 };
 firebase.initializeApp(firebaseConfig);
 const database = firebase.firestore();
@@ -70,6 +62,7 @@ const Calculator = () => {
   const [selectedblog, setSelectedBlog] = React.useState();
   const [calci, setCalci] = useState([]);
   const [selectedCalci, setSelectedCalci] = React.useState();
+  const componentRef = useRef();
 
   // const selectCalci = (calci) => {
   //   setSelectedCalci(calci);
@@ -258,7 +251,7 @@ const Calculator = () => {
           <div>
             <h3>Showing Marks Table for {sc.name}</h3>
           </div>
-          <div>
+          <div ref={componentRef}>
             <div>
               <TableContainer
                 sx={{
@@ -885,14 +878,10 @@ const Calculator = () => {
                   fontWeight: "semibold",
                 }}
               >
-                As Per the Selected grades of the Subjects,<br></br><br></br>
+                As Per the Selected grades of the Subjects,<br></br>
+                <br></br>
                 <b>Your Expected CGPA is: {Tcredits / 20}</b>
               </Typography>
-              {/* <Typography
-                sx={{ mt: 2, mb: 2, fontSize: 20, fontWeight: "bold" }}
-              >
-                As Per the Selected grades of the Subject
-              </Typography> */}
             </div>
             <div>
               <Typography
@@ -948,18 +937,3 @@ export default Calculator;
 //       <br></br>
 //     </Article>
 //   ))}
-export const gradepts = (grade) => {
-  calci.map((post, index) => (
-    <Article key={`post-key-${index}`}>
-      <Heading as="h3" content={post.name} />
-      {/* <Text content={post.Timestamp} /> */}
-      <Text lable="Maths: " content={(90 - post.Maths) * 2} />
-      <Text lable="Electronics: " content={(90 - post.Electronics) * 2} />
-      <Text lable="C Programming: " content={post.CProgramming} />
-      <Text lable="Mechanical: " content={post.Mechanical} />
-      <Text lable="Chemistry: " content={post.Chemistry} />
-      <Text lable="AEC: " content={post.AEC} />
-      <br></br>
-    </Article>
-  ));
-};

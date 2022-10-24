@@ -20,3 +20,69 @@ hr.line2 {
 .css-1ex1afd-MuiTableCell-root {
   text-align: center !important;
 }
+.print__section {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 3px;
+}
+.print__section h1 {
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  font-size: 23px;
+}
+.card {
+  position: relative;
+  width: 100%;
+  clear: both;
+  display: flex;
+  flex-direction: column;
+}
+.float__start {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+}
+.float__start h3 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  border-bottom: 1px solid #d6d6d6;
+  margin-bottom: 7px;
+  padding-bottom: 7px;
+}
+.float__infoss ul {
+  margin-top: 27px;
+}
+.float__infoss li {
+  margin-top: 17px;
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+.print__button {
+  display: block;
+  color: rgb(255 255 255/87%);
+  background-color: #f10;
+  margin-bottom: 7px;
+  margin-top: 7px;
+  padding: 13px 30px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  border: 0;
+  float: right;
+  cursor: pointer;
+}
+@media print {
+  .card {
+    padding: 17px;
+  }
+}

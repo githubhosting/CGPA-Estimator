@@ -18,6 +18,7 @@ import { MenuBook } from "@material-ui/icons";
 import PostIcon from "@material-ui/icons/Book";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import Marks from "@material-ui/icons/Grade";
+import ImageIcon from '@mui/icons-material/Image';
 export const MyMenu = (props) => (
   <Menu {...props}>
     <DashboardMenuItem />
@@ -27,6 +28,7 @@ export const MyMenu = (props) => (
       primaryText="Grade Calculator"
       leftIcon={<CalculateIcon />}
     />
+    <MenuItemLink to="/images" primaryText="Images" leftIcon={<ImageIcon />} />
   </Menu>
 );
 

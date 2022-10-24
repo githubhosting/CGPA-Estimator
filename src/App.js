@@ -9,8 +9,17 @@ import {
   calciShow,
   calciCreate,
   calciEdit,
+  imageCreate,
+  imageShow,
+  imageList,
 } from "./users";
-import { Admin, CustomRoutes, Resource } from "react-admin";
+import {
+  Admin,
+  CustomRoutes,
+  ListGuesser,
+  Resource,
+  ShowGuesser,
+} from "react-admin";
 import { Route } from "react-router-dom";
 import MyPage from "./MyPage";
 import Calci from "./Calci";
@@ -80,6 +89,13 @@ class App extends React.Component {
             show={calciShow}
             create={calciCreate}
             edit={calciEdit}
+          />
+          <Resource
+            name="images"
+            list={imageList}
+            show={imageShow}
+            create={imageCreate}
+            edit={Users.imageEdit}
           />
           <CustomRoutes>
             <Route path="/mypage" element={<MyPage />} />

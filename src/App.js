@@ -51,7 +51,6 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 console.log({ firebaseConfig, firebaseApp });
 
-import MyLoginPage from "./MyLoginPage";
 const authProvider = FirebaseAuthProvider(firebaseConfig);
 const dataProvider = FirebaseDataProvider(firebaseConfig, {
   logging: true,
@@ -60,7 +59,7 @@ const dataProvider = FirebaseDataProvider(firebaseConfig, {
   // watch: ['posts'];
   // dontwatch: ['comments'];
   persistence: "local",
-  // disableMeta: true
+  disableMeta: true,
   dontAddIdFieldToDoc: true,
   lazyLoading: {
     enabled: true,

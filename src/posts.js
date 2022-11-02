@@ -160,7 +160,6 @@ export const PostShow = (props) => (
       <TextField source="name" />
       <TextField source="title" />
       <RichTextField source="body" />
-      <EmailField source="updatedby" />
       <DateField
         options={{
           weekday: "long",

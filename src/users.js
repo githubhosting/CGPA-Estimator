@@ -191,7 +191,6 @@ export const calciList = (props) => {
             }}
             linkType="show"
             primaryText={(record) => <b>{record.name}</b>}
-            secondaryText={(record) => `Created By: ${record.createdby}`}
             leftAvatar={(record) => (record.avatar ? record.avatar : null)}
           />
         ) : (

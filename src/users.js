@@ -517,3 +517,122 @@ export const imageList = (props) => {
     </>
   );
 };
+
+export const categoryList = (props) => {
+  const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  return (
+    <>
+      <List {...props} sx={{ mt: 2 }} actions={<PostListActions />}>
+        {isSmall ? (
+          <SimpleList
+            sx={{
+              borderRadius: "0.5rem",
+              boxShadow: "0 0 0.6rem rgba(0,0,0,0.1)",
+            }}
+            linkType="show"
+            primaryText={(record) => <b>{record.title}</b>}
+          />
+        ) : (
+          <Datagrid bulkActionButtons={false} exporter={false} rowClick="show">
+            <TextField sx={{ fontWeight: "bold" }} source="title" />
+            <ShowButton sx={{ fontWeight: "bold" }} label="Show" />
+            <EditButton sx={{ fontWeight: "bold" }} label="Edit" />
+            <DeleteWithConfirmButton
+              confirmContent="You will not be able to recover this record. Are you sure?"
+              label="Delete"
+              translateOptions={(record) => record.title}
+              redirect={false}
+            />
+          </Datagrid>
+        )}
+      </List>
+    </>
+  );
+};
+
+export const categoryCreate = () => (
+  <Create redirect="list">
+    <SimpleForm>
+      <TextInput source="title" />
+      <TextInput source="courses" />
+      <TextInput source="links" />
+      <TextInput source="src" />
+    </SimpleForm>
+  </Create>
+);
+
+export const categoryEdit = (props) => (
+  <Edit {...props} redirect="list">
+    <SimpleForm>
+      <TextInput source="title" />
+      <TextInput source="courses" />
+      <TextInput source="links" />
+      <TextInput source="src" />
+    </SimpleForm>
+  </Edit>
+);
+export const cseaimlCreate = () => (
+  <Create redirect="show">
+    <SimpleForm>
+      <TextInput source="title" />
+      <TextInput source="description" />
+      <TextInput source="link" />
+      <TextInput source="tag" />
+    </SimpleForm>
+  </Create>
+);
+
+export const cseaimlEdit = (props) => (
+  <Edit {...props}>
+    <SimpleForm>
+      <TextInput source="title" />
+      <TextInput source="description" />
+      <TextInput source="link" />
+      <TextInput source="tag" />
+    </SimpleForm>
+  </Edit>
+);
+
+export const cseaimlShow = (props) => (
+  <Show {...props}>
+    <SimpleShowLayout>
+      <TextField source="title" />
+      <TextField source="description" />
+      <TextField source="link" />
+      <TextField source="tag" />
+    </SimpleShowLayout>
+  </Show>
+);
+
+export const cseaimlList = (props) => {
+  const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+
+  return (
+    <>
+      <List {...props} sx={{ mt: 2 }} actions={<PostListActions />}>
+        {isSmall ? (
+          <SimpleList
+            sx={{
+              borderRadius: "0.5rem",
+              boxShadow: "0 0 0.6rem rgba(0,0,0,0.1)",
+            }}
+            linkType="show"
+            primaryText={(record) => <b>{record.title}</b>}
+          />
+        ) : (
+          <Datagrid bulkActionButtons={false} exporter={false} rowClick="show">
+            <TextField sx={{ fontWeight: "bold" }} source="title" />
+            <ShowButton sx={{ fontWeight: "bold" }} label="Show" />
+            <EditButton sx={{ fontWeight: "bold" }} label="Edit" />
+            <DeleteWithConfirmButton
+              confirmContent="You will not be able to recover this record. Are you sure?"
+              label="Delete"
+              translateOptions={(record) => record.name}
+              redirect={false}
+            />
+          </Datagrid>
+        )}
+      </List>
+    </>
+  );
+};

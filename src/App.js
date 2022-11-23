@@ -96,6 +96,21 @@ class App extends React.Component {
             create={imageCreate}
             edit={Users.imageEdit}
           />
+          <Resource
+            name="categories"
+            list={Users.categoryList}
+            // show={Users.categoryShow}
+            create={Users.categoryCreate}
+            edit={Users.categoryEdit}
+          />
+          <Resource
+            name="cseaiml"
+            list={Users.cseaimlList}
+            show={Users.cseaimlShow}
+            create={Users.cseaimlCreate}
+            edit={Users.cseaimlEdit}
+          />
+
           <CustomRoutes>
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/calculator" element={<Calculator />} />

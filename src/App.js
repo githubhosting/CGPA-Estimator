@@ -110,6 +110,13 @@ class App extends React.Component {
             create={Users.cseaimlCreate}
             edit={Users.cseaimlEdit}
           />
+          <Resource
+            name="otherlinks"
+            list={Users.otherlinksList}
+            show={Users.otherlinksShow}
+            create={Users.otherlinksCreate}
+            edit={Users.otherlinksEdit}
+          />
 
           <CustomRoutes>
             <Route path="/mypage" element={<MyPage />} />

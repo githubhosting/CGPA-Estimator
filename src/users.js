@@ -47,6 +47,9 @@ import {
   DeleteWithConfirmButton,
   SimpleList,
   ShowBase,
+  SingleFieldList,
+  UrlField,
+  ChipField,
 } from "react-admin";
 import {
   CreateButton,
@@ -571,6 +574,7 @@ export const categoryEdit = (props) => (
     </SimpleForm>
   </Edit>
 );
+
 export const cseaimlCreate = () => (
   <Create redirect="show">
     <SimpleForm>
@@ -578,6 +582,11 @@ export const cseaimlCreate = () => (
       <TextInput source="description" />
       <TextInput source="link" />
       <TextInput source="tag" />
+      <ArrayInput source="links">
+        <SimpleFormIterator>
+          <TextInput type="url" />
+        </SimpleFormIterator>
+      </ArrayInput>
     </SimpleForm>
   </Create>
 );
@@ -605,6 +614,91 @@ export const cseaimlShow = (props) => (
 );
 
 export const cseaimlList = (props) => {
+  const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+
+  return (
+    <>
+      <List {...props} sx={{ mt: 2 }} actions={<PostListActions />}>
+        {isSmall ? (
+          <SimpleList
+            sx={{
+              borderRadius: "0.5rem",
+              boxShadow: "0 0 0.6rem rgba(0,0,0,0.1)",
+            }}
+            linkType="show"
+            primaryText={(record) => <b>{record.title}</b>}
+          />
+        ) : (
+          <Datagrid bulkActionButtons={false} exporter={false} rowClick="show">
+            <TextField sx={{ fontWeight: "bold" }} source="title" />
+            <ShowButton sx={{ fontWeight: "bold" }} label="Show" />
+            <EditButton sx={{ fontWeight: "bold" }} label="Edit" />
+            <DeleteWithConfirmButton
+              confirmContent="You will not be able to recover this record. Are you sure?"
+              label="Delete"
+              translateOptions={(record) => record.name}
+              redirect={false}
+            />
+          </Datagrid>
+        )}
+      </List>
+    </>
+  );
+};
+
+export const otherlinksCreate = () => (
+  <Create redirect="show">
+    <SimpleForm>
+      <TextInput source="title" />
+      <TextInput source="description" />
+      <ArrayInput source="links">
+        <SimpleFormIterator>
+          <TextInput source="urltitle" />
+          <ArrayInput source="url">
+            <SimpleFormIterator>
+              <TextInput type="url" />
+            </SimpleFormIterator>
+          </ArrayInput>
+        </SimpleFormIterator>
+      </ArrayInput>
+    </SimpleForm>
+  </Create>
+);
+
+export const otherlinksEdit = (props) => (
+  <Edit {...props}>
+    <SimpleForm>
+      <TextInput source="title" />
+      <TextInput source="description" />
+      <ArrayInput source="links">
+        <SimpleFormIterator>
+          <TextInput source="urltitle" />
+          <TextInput source="url" type="url" />
+        </SimpleFormIterator>
+      </ArrayInput>
+    </SimpleForm>
+  </Edit>
+);
+
+export const otherlinksShow = (props) => {
+  const record = useRecordContext();
+  return (
+    <Show {...props}>
+      <SimpleShowLayout>
+        <TextField source="title" />
+        <TextField source="description" />
+        <ArrayField source="links">
+          <Datagrid bulkActionButtons={false}>
+            <TextField source="urltitle" />
+            <UrlField source="url" />
+          </Datagrid>
+        </ArrayField>
+      </SimpleShowLayout>
+    </Show>
+  );
+};
+
+export const otherlinksList = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   return (

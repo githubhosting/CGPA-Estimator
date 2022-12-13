@@ -16,6 +16,7 @@ import Settings from "@material-ui/icons/Settings";
 import Badge from "@mui/material/Badge";
 import { MenuBook } from "@material-ui/icons";
 import PostIcon from "@material-ui/icons/Book";
+import LinkIcon from "@material-ui/icons/Link";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import Marks from "@material-ui/icons/Grade";
 import ImageIcon from "@mui/icons-material/Image";
@@ -30,6 +31,11 @@ export const MyMenu = (props) => (
     />
     <MenuItemLink to="/images" primaryText="Images" leftIcon={<ImageIcon />} />
     <MenuItemLink to="/cseaiml" primaryText="CSEAIML" leftIcon={<PostIcon />} />
+    <MenuItemLink
+      to="/otherlinks"
+      primaryText="OtherLinks"
+      leftIcon={<LinkIcon />}
+    />
     <MenuItemLink to="/categories" primaryText="Categories" />
   </Menu>
 );

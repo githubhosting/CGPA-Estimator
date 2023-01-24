@@ -29,8 +29,6 @@ export const MyMenu = (props) => (
       primaryText="Grade Calculator"
       leftIcon={<CalculateIcon />}
     />
-    <MenuItemLink to="/images" primaryText="Images" leftIcon={<ImageIcon />} />
-    <MenuItemLink to="/cseaiml" primaryText="CSEAIML" leftIcon={<PostIcon />} />
     <MenuItemLink
       to="/otherlinks"
       primaryText="OtherLinks"

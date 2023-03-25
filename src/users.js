@@ -653,10 +653,10 @@ export const otherlinksCreate = () => (
       <TextInput source="description" />
       <ArrayInput source="links">
         <SimpleFormIterator>
-          <TextInput source="urltitle" />
-          <ArrayInput source="url">
-            <SimpleFormIterator>
-              <TextInput type="url" />
+          <TextInput source="urltitle" label="URL Title" />
+          <ArrayInput source="url" label="URL Array">
+            <SimpleFormIterator addButton={<Button>Add</Button>}>
+              <TextInput type="url" label="URL Link" />
             </SimpleFormIterator>
           </ArrayInput>
         </SimpleFormIterator>

@@ -48,16 +48,10 @@ import EventMonitor from "./EventMonitor";
 import { firebaseConfig } from "./FIREBASE_CONFIG";
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-
-console.log({ firebaseConfig, firebaseApp });
-
 const authProvider = FirebaseAuthProvider(firebaseConfig);
 const dataProvider = FirebaseDataProvider(firebaseConfig, {
   logging: true,
-  // rootRef: 'rootrefcollection/QQG2McwjR2Bohi9OwQzP',
   app: firebaseApp,
-  // watch: ['posts'];
-  // dontwatch: ['comments'];
   persistence: "local",
   disableMeta: false,
   dontAddIdFieldToDoc: true,
@@ -68,10 +62,6 @@ const dataProvider = FirebaseDataProvider(firebaseConfig, {
     enabled: true,
   },
 });
-// const MyPage = () => {
-//   return <div>Something</div>;
-// };
-
 class App extends React.Component {
   render() {
     return (
@@ -79,8 +69,10 @@ class App extends React.Component {
         <Admin
           title="Calci 2.0"
           dataProvider={dataProvider}
+          authProvider={authProvider}
           layout={MyLayout}
           dashboard={Dashboard}
+          loginPage={CustomLoginPage}
         >
           <Resource
             name="calci"

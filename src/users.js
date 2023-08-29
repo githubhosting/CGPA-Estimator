@@ -649,16 +649,12 @@ export const cseaimlList = (props) => {
 export const otherlinksCreate = () => (
   <Create redirect="show">
     <SimpleForm>
-      <TextInput source="title" />
-      <TextInput source="description" />
+      <TextInput source="title" label="Card Title" />
+      <TextInput source="description" label="Card Description" />
       <ArrayInput source="links">
         <SimpleFormIterator>
-          <TextInput source="urltitle" label="URL Title" />
-          <ArrayInput source="url" label="URL Array">
-            <SimpleFormIterator addButton={<Button>Add</Button>}>
-              <TextInput type="url" label="URL Link" />
-            </SimpleFormIterator>
-          </ArrayInput>
+          <TextInput label="Link" source="url" type="url" />
+          <TextInput label="Link Description" source="description" />
         </SimpleFormIterator>
       </ArrayInput>
     </SimpleForm>
@@ -668,12 +664,12 @@ export const otherlinksCreate = () => (
 export const otherlinksEdit = (props) => (
   <Edit {...props}>
     <SimpleForm>
-      <TextInput source="title" />
-      <TextInput source="description" />
+      <TextInput source="title" label="Card Title" />
+      <TextInput source="description" label="Card Description" />
       <ArrayInput source="links">
         <SimpleFormIterator>
-          <TextInput source="urltitle" />
-          <TextInput source="url" type="url" />
+          <TextInput label="Link" source="url" type="url" />
+          <TextInput label="Link Description" source="description" />
         </SimpleFormIterator>
       </ArrayInput>
     </SimpleForm>
@@ -689,7 +685,7 @@ export const otherlinksShow = (props) => {
         <TextField source="description" />
         <ArrayField source="links">
           <Datagrid bulkActionButtons={false}>
-            <TextField source="urltitle" />
+            <TextField source="description" />
             <UrlField source="url" />
           </Datagrid>
         </ArrayField>

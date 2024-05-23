@@ -81,7 +81,7 @@ class App extends React.Component {
             create={calciCreate}
             edit={calciEdit}
           />
-          <Resource
+          {/* <Resource
             name="images"
             list={imageList}
             show={imageShow}
@@ -91,7 +91,7 @@ class App extends React.Component {
           <Resource
             name="categories"
             list={Users.categoryList}
-            // show={Users.categoryShow}
+            show={Users.categoryShow}
             create={Users.categoryCreate}
             edit={Users.categoryEdit}
           />
@@ -101,7 +101,7 @@ class App extends React.Component {
             show={Users.cseaimlShow}
             create={Users.cseaimlCreate}
             edit={Users.cseaimlEdit}
-          />
+          /> */}
           <Resource
             name="otherlinks"
             list={Users.otherlinksList}

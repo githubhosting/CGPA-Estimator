@@ -34,7 +34,6 @@ export const MyMenu = (props) => (
       primaryText="OtherLinks"
       leftIcon={<LinkIcon />}
     />
-    <MenuItemLink to="/categories" primaryText="Categories" />
   </Menu>
 );
 

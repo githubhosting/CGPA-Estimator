@@ -647,7 +647,7 @@ export const cseaimlList = (props) => {
 };
 
 export const otherlinksCreate = () => (
-  <Create redirect="show">
+  <Create redirect="list">
     <SimpleForm>
       <TextInput source="title" label="Card Title" />
       <TextInput source="description" label="Card Description" />
